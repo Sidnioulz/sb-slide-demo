@@ -1,0 +1,12 @@
+@import '../base.css';
+
+.slide-footer {
+  display: flex;
+  align-items: stretch;
+  padding: var(--slide-footer-padding);
+  gap: var(--slide-footer-gap);
+}
+
+.slide-footer__spacer {
+  flex: 1;
+}

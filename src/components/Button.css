@@ -1,0 +1,83 @@
+@import '../base.css';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  
+  padding-block: var(--button-padding-y);
+  padding-inline: var(--button-padding-x);
+  
+  font-family: sans-serif;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  text-decoration: none;
+  
+  background: none;
+  border: var(--button-border-width) solid;
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  transition: all var(--button-transition);
+  
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.button--icon-start {
+  flex-direction: row;
+}
+
+.button--icon-end {
+  flex-direction: row-reverse;
+}
+
+.button--primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-border);
+}
+
+.button--primary:hover:not(:disabled) {
+  background-color: var(--button-primary-bg-hover);
+  border-color: var(--button-primary-border-hover);
+}
+
+.button--secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  border-color: var(--button-secondary-border);
+}
+
+.button--secondary:hover:not(:disabled) {
+  background-color: var(--button-secondary-bg-hover);
+  border-color: var(--button-secondary-border-hover);
+}
+
+.button[aria-disabled="true"] {
+  background-color: var(--button-disabled-bg);
+  color: var(--button-disabled-color);
+  border-color: var(--button-disabled-border);
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--button-focus-ring);
+}
+
+.button[aria-disabled="true"]:focus-visible {
+  box-shadow: var(--button-focus-ring-disabled);
+}
+
+.button-icon {
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  flex-shrink: 0;
+}
+
+.button-content {
+  flex: 1;
+  text-align: center;
+}
