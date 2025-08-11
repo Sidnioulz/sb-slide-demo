@@ -73,7 +73,7 @@
   color: var(--button-disabled-color);
   border-color: var(--button-disabled-border);
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.65;
 }
 
 .button:focus-visible {
@@ -94,4 +94,18 @@
 .button-content {
   flex: 1;
   text-align: center;
+}
+
+/* Draggable button styles */
+.button--draggable {
+  cursor: grab;
+  position: relative;
+}
+
+.button--draggable:active {
+  cursor: grabbing;
+}
+
+.button--draggable:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }

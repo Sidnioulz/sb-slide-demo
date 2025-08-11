@@ -5,14 +5,190 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  gap: 2rem;
 
-  background-color: bisque;
+  --color-bg: #0d1026;
+  --color-text-bright: #fff;
+  --color-text: #eee;
+  --color-text-muted: #d2d4e6;
+  --color-link: hsl(54, 100%, 73%);
+  --color-text-accent: #bbeaa6;
+  --color-text-hl1: #ead3a6;
+  --color-text-hl2: #eab0a6;
+  --color-text-hl3: #e4a6ea;
+
+  --color-accent-bg: #bbeaa6;
+  --color-accent-text: #161616;
+
+  background: var(--color-bg);
+  color: var(--color-text);
+  z-index: 1;
+}
+
+.slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  margin: 0;
+  z-index: 1;
 }
 
 .slide-content {
   height: 100%;
-  padding: 5rem 10vw 0;
+  padding: 3rem 10vw 0;
+  position: relative;
+
+  text-wrap: balance;
+
+  font-family: "PT Sans Caption", sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+
+  --font-size-base: 1.6rem;
+  --font-size-sm: calc(var(--font-size-base) * 0.875);
+  --font-size-lg: calc(var(--font-size-base) * 1.25);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: #fff;
+
+  section {
+
+    background-color: var(--color-accent-bg);
+    color: var(--color-accent-text);
+    border-radius: calc(var(--font-size-base) * 0.5);
+    padding: calc(var(--font-size-base) * 0.75);
+    
+    font-family: 'Nunito Sans', sans-serif;
+    text-wrap: pretty;
+
+    display: block;
+    width: calc(100vw - 20rem);
+    padding-inline-end: 8rem;
+    margin-inline-start: 4rem;
+
+    & p:first-child {
+      margin-top: 0;
+    }
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  /* Headings */
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    font-family: 'Share Tech', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+  }
+
+  & h1 {
+    font-size: calc(var(--font-size-base) * 4);
+    margin-bottom: calc(var(--font-size-base) * 1.4);
+  }
+  
+  & h2 {
+    font-size: calc(var(--font-size-base) * 3);
+    margin-bottom: calc(var(--font-size-base) * 1);
+  }
+  
+  & h3 {
+    font-size: calc(var(--font-size-base) * 2.25);
+    margin-bottom: calc(var(--font-size-base) * 0.9);
+  }
+  
+  & h4 {
+    font-size: calc(var(--font-size-base) * 1.7);
+    margin-bottom: calc(var(--font-size-base) * 0.6);
+  }
+
+  & h5 {
+    font-size: calc(var(--font-size-base) * 1.3);
+    margin-bottom: calc(var(--font-size-base) * 0.4);
+  }
+
+  & h6 {
+    font-size: calc(var(--font-size-base) * 1.1);
+    margin-bottom: calc(var(--font-size-base) * 0.3);
+  }
+  
+  /* Text elements */
+  & p {
+    margin-bottom: calc(var(--font-size-base) * 0.75);
+  }
+  
+  & ul, & ol {
+    margin-bottom: calc(var(--font-size-base) * 0.75);
+    margin-left: calc(var(--font-size-base) * 1);
+  }
+  
+  & li, & dd {
+    margin-bottom: calc(var(--font-size-base) * 0.25);
+  }
+
+  & [aria-disabled="true"] {
+    opacity: 0.2;
+    text-decoration: line-through;
+  }
+
+  & [aria-disabled="true"] * {
+    text-decoration: line-through;
+  }
+  
+  & dt {
+    font-size: var(--font-size-lg);
+  }
+  
+  & dd {
+    color: #d2d4e6;
+    margin-bottom: calc(var(--font-size-base) * 0.25);
+  }
+  
+  & blockquote {
+    border-left: calc(var(--font-size-base) * 0.25) solid #ddd;
+    padding-left: calc(var(--font-size-base) * 0.75);
+    font-style: italic;
+    margin: calc(var(--font-size-base) * 1) 0;
+  }
+  
+  & code {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: calc(var(--font-size-base) * 0.1) calc(var(--font-size-base) * 0.2);
+    border-radius: calc(var(--font-size-base) * 0.15);
+    font-size: 0.9em;
+  }
+  
+  & pre {
+    border-radius: calc(var(--font-size-base) * 0.25);
+    overflow-x: auto;
+
+    & .docblock-source {
+      margin: 0 !important;
+    }
+  }
+  
+  & a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+  
+  & img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  & hr {
+    border: 0;
+    height: calc(var(--font-size-base) * 0.1);
+    background-color: #ddd;
+    margin: calc(var(--font-size-base) * 1.5) 0;
+  }
 }
 
 .slide-footer {
@@ -53,4 +229,20 @@
   font-size: 1rem;
   border: none;
   background-color: var(--slide-edit-textarea-bg);
+}
+
+@keyframes pulse-opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pulse {
+  animation: pulse-opacity 8s ease-in-out infinite;
 }

@@ -6,12 +6,29 @@ import { Slide } from "../../src/components/Slide";
 <Meta title="Slide 2" />
 
 <Slide>
-  # Table of Contents
+  ## Table of Contents
 
-  * layoutCustomisations API
-  * /index.json to identify sibling stories
-  * Channel events to react to HMR and story changes without React hooks
-  * Experimental Request Response API
-  * (TBC) Sidebar renderLabel
-  * (TBC) Story indexer API
+  <dl>
+    <dt>LayoutCustomisations API</dt>
+    <dd>Show and hide UI regions based on the current page</dd>
+
+    <dt>The `/index.json` endpoint</dt>
+    <dd>Browse the content indexed in Storybook</dd>
+
+    <dt>Channel API</dt>
+    <dd>React to HMR and story change events</dd>
+
+    <dt>RequestResponse API</dt>
+    <dd>Talk to the Node.js server and live edit content</dd>
+
+    <dt aria-disabled>AddonState API</dt>
+    <dd aria-disabled>Manage non-persistent state inside your addon</dd>
+
+    <dt aria-disabled>Sidebar `renderLabel` method</dt>
+    <dd aria-disabled>Drag & drop slides in the sidebar to reorder them</dd>
+
+    <dt aria-disabled>Indexer API</dt>
+    <dd aria-disabled>Create your own stories from a custom data format</dd>
+  </dl>
+
 </Slide>

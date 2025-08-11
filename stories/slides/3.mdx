@@ -4,25 +4,21 @@ import "../../src/base.css";
 import { Slide } from "../../src/components/Slide";
 
 <Meta title="Slide 3" />
+
+
+
 <Slide>
+  ## Where's the UI gone?
 
-export const FrogComponent = () => (
-  <div>
-    <h1>Frogs Rule!</h1>
-    <p>Frogs are amazing creatures that play a vital role in our ecosystem.</p>
-    <ul>
-      <li>They help control insect populations.</li>
-      <li>Frogs are indicators of environmental health.</li>
-      <li>They have unique adaptations for survival.</li>
-    </ul>
-    <p>Learn more about frogs and their importance in nature!</p>
+  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'stretch', gap: '2rem', marginTop: '6rem' }}>
+    <span style={{flex: 4, display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+      <p>Storybook uses a sidebar for search and navigation, a toolbar with various controls, and a panel for addons to display their UI.</p>
+      <p>Since version 9, the `layoutCustomisations` API lets users hide the toolbar or sidebar based on the current story's attributes.</p>
+      <p style={{fontSize: 'var(--font-size-lg)', color: 'var(--color-text-accent)', fontWeight: 500 }}>You can now build more immersive docs content alongside your stories.</p>
+    </span>
+    <div style={{ flex: 6, position: 'relative' }}>
+      <img style={{ position: 'absolute', inset: 0 }} src="storybook-ui.png" />
+      <img style={{ position: 'absolute', inset: 0 }} className="pulse" src="storybook-ui-areas.png" />
+    </div>
   </div>
-);
-
-
-
-  <FrogComponent />
-
-  <a href="https://www.frogs-rule.com">Find out MORE ABOUT FROGGERS!</a>
-
 </Slide>

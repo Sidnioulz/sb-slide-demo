@@ -1,11 +1,40 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { CategoryIcon } from '@storybook/icons';  
 
 import "../../src/base.css";
 import { Slide } from "../../src/components/Slide";
 
 <Meta title="Slide 6" />
-<Slide>
 
-  # Delete me please! 6
+<Slide>
+  ## Why use the index?
+
+<div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '2rem', width: '75%' }}>
+  <span style={{ display: 'flex',  justifyContent: 'center', width: '14rem' }}>
+    <img src="forma-36.svg" style={{ height: "4rem" }} />
+  </span>
+  <p style={{flex: 1}}>Maybe you want to embed Storybook preview iframes in a custom documentation website, like Contentful's [Forma 36 design system](https://f36.contentful.com/).</p>
+</div>
+
+<div style={{ marginBottom: '3rem', marginTop: '1rem', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '2rem', width: '85%' }}>
+  <span style={{ display: 'flex',  justifyContent: 'center', width: '14rem' }}>
+  <img src="southleft.svg" style={{ height: "1rem" }} />
+  </span>
+  <p style={{flex: 1}}>Or you're building a MCP server for AI-enabled workflows, and you want to extract lists of components and stories, like Southleft's [Story UI](https://southleft.com/insights/design-systems/introducing-story-ui-accelerating-layout-generation-with-ai-mcp/).</p>
+</div>
+
+<div style={{ marginBottom: '3rem', marginTop: '1rem', display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '2rem', width: '85%' }}>
+  <span style={{ display: 'flex',  justifyContent: 'center', width: '14rem' }}>
+  <img src="storybook-square.png" style={{ height: "4rem" }} />
+  </span>
+  <p style={{flex: 1}}>Or you want a navigation footer for your MDX docs, that can link to sibling stories!</p>
+</div>
+
+<section>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <CategoryIcon size={32} style={{display: 'inline'}} />
+    <span>In this slide deck demo, we compute the paths to the previous and next slides and add navigation buttons.</span>
+    </div>
+</section>
 
 </Slide>

@@ -3,13 +3,30 @@ import { Meta } from "@storybook/addon-docs/blocks";
 import "../../src/base.css";
 import { Slide } from "../../src/components/Slide";
 
-<Meta title="Slide 1" />
+<Meta title="Slide 1" tags={["slide"]} />
 
 <Slide>
   # Editing a slide deck in Storybook
 
-  or how extensible Storybook really is
+  ### *How extensible Storybook really is?*
 
-  Steve Dodier-Lazaro
-  2025-10-08
+  <div style={{ display: 'flex', marginTop: '16rem', alignItems: 'center' }}>
+    <img src="storybook-square.png" width="100" />
+
+    <div style={{ marginLeft: '1rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <span style={{ fontFamily: 'PT Sans Caption', textTransform: 'uppercase' }}>Steve Dodier-Lazaro</span>
+      <span style={{ fontSize: 'var(--font-size-sm)', color: '#ddd'}}>Storybook Community Advocate</span>
+    </div>
+
+    <div
+      style={{ 
+display: 'flex',
+flexDirection: 'column',
+justifyContent: 'space-between',
+textAlign: 'right', }}
+    >
+      <span style={{ fontFamily: 'PT Sans Caption', textTransform: 'uppercase' }}>Design Systems London</span>
+      <span style={{ fontSize: 'var(--font-size-sm)', color: '#ddd'}}>08/10/2025</span>
+    </div>
+  </div>
 </Slide>

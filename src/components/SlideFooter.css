@@ -7,6 +7,24 @@
   gap: var(--slide-footer-gap);
 }
 
+.slide-footer button, .slide-footer a {
+  opacity: 0.3;
+}
+.slide-footer button[aria-disabled="true"], .slide-footer a[aria-disabled="true"] {
+  opacity: 0.2;
+}
+
+.slide-footer button:hover:not([aria-disabled="true"]),
+.slide-footer button:focus-visible:not([aria-disabled="true"]),
+.slide-footer a:hover:not([aria-disabled="true"]),
+.slide-footer a:focus-visible:not([aria-disabled="true"]) {
+  opacity: 1;
+}
+
 .slide-footer__spacer {
   flex: 1;
+}
+
+.prismjs {
+  zoom: 150%;
 }

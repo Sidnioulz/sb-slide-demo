@@ -7,13 +7,17 @@ const channel = addons.getChannel()
 
 export type ButtonProps = {
   href?: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent) => void
   disabled?: boolean
   icon?: React.ComponentType<{ className?: string }>
   iconLocation?: 'start' | 'end'
   variant?: 'primary' | 'secondary' | 'danger'
   className?: string
   shortcut?: string
+  // Add drag event handlers
+  onDragStart?: (e: React.DragEvent) => void
+  onDragEnd?: (e: React.DragEvent) => void
+  draggable?: boolean
 } & (
   | {
       text: string
@@ -36,15 +40,28 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'secondary',
   className = '',
   shortcut,
+  onDragStart,
+  onDragEnd,
+  draggable = false,
 }) => {
   const classNames = [
     'button',
     `button--${variant}`,
     Icon && `button--icon-${iconLocation}`,
+    draggable && 'button--draggable',
     className,
   ]
     .filter(Boolean)
     .join(' ')
+
+  // Ensure drag events are properly handled for all browsers
+  const dragProps =
+    draggable && !disabled
+      ? {
+          onDragStart,
+          onDragEnd,
+        }
+      : {}
 
   const content = (
     <>
@@ -68,7 +85,7 @@ export const Button: React.FC<ButtonProps> = ({
     const finalOnClick = isInternalHref
       ? (e: React.MouseEvent) => {
           e.preventDefault()
-          onClick?.()
+          onClick?.(e)
           channel.emit(NAVIGATE_URL, href)
         }
       : onClick
@@ -82,6 +99,8 @@ export const Button: React.FC<ButtonProps> = ({
         data-tooltip-position={shortcut ? 'top' : undefined}
         className={classNames}
         onClick={finalOnClick}
+        draggable={draggable && !disabled}
+        {...dragProps}
       >
         {content}
       </a>
@@ -97,6 +116,8 @@ export const Button: React.FC<ButtonProps> = ({
       className={classNames}
       onClick={disabled ? undefined : onClick}
       aria-disabled={disabled}
+      draggable={draggable && !disabled}
+      {...dragProps}
     >
       {content}
     </button>

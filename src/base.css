@@ -317,11 +317,11 @@ img {
   }
 }
 
-[data-tooltip] {
+[data-tooltip]:not([aria-disabled="true"]) {
   position: relative;
 }
 
-[data-tooltip]:hover::after, [data-tooltip]:focus-visible::after {
+[data-tooltip]:not([aria-disabled="true"]):hover::after, [data-tooltip]:not([aria-disabled="true"]):focus-visible::after {
   content: attr(data-tooltip);
   position: absolute;
   bottom: calc(100% + 4px);

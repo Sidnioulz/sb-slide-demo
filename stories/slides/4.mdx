@@ -1,10 +1,36 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { BottomBarIcon } from '@storybook/icons';
 
 import "../../src/base.css";
 import { Slide } from "../../src/components/Slide";
 
+
 <Meta title="Slide 4" />
 
 <Slide>
-  # Delete me please! 4
+  ## How to use `layoutCustomisations`
+
+  <div style={{ marginBlock: '6rem'}}>
+
+  ```ts
+  // .storybook/manager.ts
+  import { addons } from 'storybook/manager-api'
+
+  addons.setConfig({
+    layoutCustomisations: {
+      showSidebar: ({ storyId }, defaultValue) => storyId?.startsWith('slide-') ? false : defaultValue,
+      showToolbar: ({ viewMode }, defaultValue) => viewMode !== 'docs' ? defaultValue : false,
+    },
+  })
+  ```
+
+  </div>
+
+  <section>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <BottomBarIcon size={32} style={{display: 'inline'}} />
+    <span>The API may be extended in the future, to allow hiding the addon panel and filtering out specific tools and addons.</span>
+    </div>
+  </section>
+
 </Slide>

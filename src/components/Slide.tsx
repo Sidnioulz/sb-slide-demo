@@ -19,7 +19,7 @@ export const Slide: React.FC<SlideProps> = ({ children }) => {
   if (!isEditing) {
     return (
       <main className="slide">
-        <div className="slide-content">{children}</div>
+        <div className="slide-content sb-unstyled">{children}</div>
         <SlideFooter
           onEditRequest={() => setIsEditing(true)}
           prevUrl={getPreviousAdjacentDocsUrl()}

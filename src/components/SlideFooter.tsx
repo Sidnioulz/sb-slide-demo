@@ -6,6 +6,9 @@ import {
   EditIcon,
   PlusIcon,
 } from '@storybook/icons'
+import { addons } from 'storybook/preview-api'
+import { NAVIGATE_URL } from 'storybook/internal/core-events'
+
 import { Button } from './Button'
 import './SlideFooter.css'
 import { appendSlide, deleteSlide } from '../preview/clientRequests'
@@ -13,6 +16,8 @@ import {
   getAdjacentDocsStoryIds,
   getCurrentStoryId,
 } from '../preview/indexUtils'
+
+const channel = addons.getChannel()
 
 export interface SlideFooterProps {
   onEditRequest: () => void
@@ -37,7 +42,13 @@ export const SlideFooter: React.FC<SlideFooterProps> = ({
         ariaLabel="Delete this slide"
         icon={TrashIcon}
         variant="danger"
-        onClick={() => deleteSlide(getCurrentStoryId())}
+        onClick={async () => {
+          await deleteSlide(getCurrentStoryId())
+
+          if (isLastSlide) {
+            channel.emit(NAVIGATE_URL, prevUrl)
+          }
+        }}
       />
       <Button
         ariaLabel="Edit this slide"
@@ -59,7 +70,7 @@ export const SlideFooter: React.FC<SlideFooterProps> = ({
         href={prevUrl}
         disabled={!prevUrl}
         icon={ChevronLeftIcon}
-        variant="primary"
+        variant="secondary"
         shortcut="Alt+ArrowLeft"
       />
       <Button
@@ -67,7 +78,7 @@ export const SlideFooter: React.FC<SlideFooterProps> = ({
         href={nextUrl}
         disabled={!nextUrl}
         icon={ChevronRightIcon}
-        variant="primary"
+        variant="secondary"
         shortcut="Alt+ArrowRight"
       />
     </nav>
