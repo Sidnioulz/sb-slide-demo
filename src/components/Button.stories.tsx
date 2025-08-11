@@ -21,6 +21,11 @@ const meta: Meta<typeof Button> = {
       control: 'text',
       description: 'The text content of the button',
     },
+    ariaLabel: {
+      control: 'text',
+      description:
+        'The accessible label of the button, mandatory if text is skipped',
+    },
     href: {
       control: 'text',
       description: 'If provided, the button will render as a link',
@@ -31,7 +36,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'danger'],
       description: 'Visual style variant of the button',
     },
     iconLocation: {

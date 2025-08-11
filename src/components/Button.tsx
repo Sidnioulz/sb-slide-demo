@@ -11,7 +11,7 @@ export type ButtonProps = {
   disabled?: boolean
   icon?: React.ComponentType<{ className?: string }>
   iconLocation?: 'start' | 'end'
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'danger'
   className?: string
   shortcut?: string
 } & (

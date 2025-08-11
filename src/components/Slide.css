@@ -20,6 +20,16 @@
   margin-inline-end: 4vw;
 }
 
+.slide-edit-loading {
+  background-color: var(--slide-edit-loading-bg);
+  color: var(--slide-edit-loading-text);
+}
+
+.slide-edit-error {
+  background-color: var(--slide-edit-error-bg);
+  color: var(--slide-edit-error-text);
+}
+
 .slide-edit-header {
   display: flex;
   gap: 0.5rem;

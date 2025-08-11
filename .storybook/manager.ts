@@ -1,7 +1,7 @@
 import { addons } from 'storybook/manager-api'
 import Events from 'storybook/internal/core-events'
-import { WindowWithIndex } from '../src/types/WindowWithIndex'
-import { ADDON_ID } from '../src/types/constants'
+import { WindowWithIndex } from '../src/preview/types/WindowWithIndex'
+import { ADDON_ID } from '../src/constants'
 
 declare global {
   interface Window {
@@ -40,13 +40,13 @@ async function refreshIndex() {
 
 async function refreshCurrentStoryLinks(storyId?: string) {
   if (!storyId) {
-    window.__sb_linked.prevPath = undefined
-    window.__sb_linked.nextPath = undefined
     throw new Error(
       'Attempted to compute current story links without a story id.',
     )
   }
 
+  // This is only here to ensure the index is fresh before we consume it.
+  // Can help on initial load if we come from localhost:6006 with no story path.
   let index = window.__sb_linked.index
   if (!index) {
     await refreshIndex()
@@ -54,8 +54,6 @@ async function refreshCurrentStoryLinks(storyId?: string) {
 
   index = window.__sb_linked.index
   if (!index) {
-    window.__sb_linked.prevPath = undefined
-    window.__sb_linked.nextPath = undefined
     throw new Error(
       'Attempted to use current story index data before the index was fetched.',
     )
@@ -63,24 +61,10 @@ async function refreshCurrentStoryLinks(storyId?: string) {
 
   const entry = index[storyId]
   if (!entry) {
-    window.__sb_linked.prevPath = undefined
-    window.__sb_linked.nextPath = undefined
     throw new Error(`No story found in index for ID: ${storyId}`)
   }
 
-  const { prev, next } = entry
-
-  const prevEntry = prev ? index[prev] : undefined
-  const nextEntry = next ? index[next] : undefined
-
   window.__sb_linked.currentStoryId = storyId
-
-  window.__sb_linked.prevPath = prevEntry
-    ? `/${prevEntry.data.type}/${prevEntry.data.id}`
-    : undefined
-  window.__sb_linked.nextPath = nextEntry
-    ? `/${nextEntry.data.type}/${nextEntry.data.id}`
-    : undefined
 }
 //
 //

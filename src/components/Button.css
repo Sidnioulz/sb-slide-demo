@@ -39,7 +39,7 @@
   border-color: var(--button-primary-border);
 }
 
-.button--primary:hover:not(:disabled) {
+.button--primary:hover:not([aria-disabled="true"]) {
   background-color: var(--button-primary-bg-hover);
   border-color: var(--button-primary-border-hover);
 }
@@ -50,9 +50,22 @@
   border-color: var(--button-secondary-border);
 }
 
-.button--secondary:hover:not(:disabled) {
+.button--secondary:hover:not([aria-disabled="true"]) {
   background-color: var(--button-secondary-bg-hover);
   border-color: var(--button-secondary-border-hover);
+  color: var(--button-secondary-color-hover);
+}
+
+.button--danger {
+  background-color: var(--button-danger-bg);
+  color: var(--button-danger-color);
+  border-color: var(--button-danger-border);
+}
+
+.button--danger:hover:not([aria-disabled="true"]) {
+  background-color: var(--button-danger-bg-hover);
+  border-color: var(--button-danger-border-hover);
+  color: var(--button-danger-color-hover);
 }
 
 .button[aria-disabled="true"] {
@@ -60,6 +73,7 @@
   color: var(--button-disabled-color);
   border-color: var(--button-disabled-border);
   cursor: not-allowed;
+  opacity: 0.8;
 }
 
 .button:focus-visible {

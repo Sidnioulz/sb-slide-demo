@@ -3,9 +3,26 @@
 /* Base Design Tokens */
 :root {
   /* Color Tokens */
+  --color-primary-50: #e3f2fd;
+  --color-primary-100: #bbdefb;
+  --color-primary-200: #90caf9;
+  --color-primary-300: #64b5f6;
+  --color-primary-400: #42a5f5;
   --color-primary-500: #0066cc;
   --color-primary-600: #0052a3;
   --color-primary-700: #003d7a;
+  --color-primary-800: #002a52;
+  --color-primary-900: #001a2b;
+  --color-danger-50: #ffebee;
+  --color-danger-100: #ffcdd2;
+  --color-danger-200: #ef9a9a;
+  --color-danger-300: #e57373;
+  --color-danger-400: #ef5350;
+  --color-danger-500: #f44336;
+  --color-danger-600: #d32f2f;
+  --color-danger-700: #c62828;
+  --color-danger-800: #b71c1c;
+  --color-danger-900: #9c2727;
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f5;
   --color-neutral-200: #e5e5e5;
@@ -84,13 +101,22 @@
   --button-secondary-bg: var(--color-neutral-50);
   --button-secondary-color: var(--color-neutral-700);
   --button-secondary-border: var(--color-neutral-200);
-  --button-secondary-bg-hover: var(--color-neutral-100);
-  --button-secondary-border-hover: var(--color-neutral-300);
+  --button-secondary-bg-hover: var(--color-primary-100);
+  --button-secondary-color-hover: var(--color-primary-700);
+  --button-secondary-border-hover: var(--color-primary-500);
+
+  /* Button Danger State */
+  --button-danger-bg: var(--color-danger-50);
+  --button-danger-color: var(--color-danger-700);
+  --button-danger-border: var(--color-danger-200);
+  --button-danger-bg-hover: var(--color-danger-100);
+  --button-danger-color-hover: var(--color-danger-900);
+  --button-danger-border-hover: var(--color-danger-300);
 
   /* Button Disabled State */
-  --button-disabled-bg: var(--color-neutral-100);
-  --button-disabled-color: var(--color-neutral-400);
-  --button-disabled-border: var(--color-neutral-200);
+  --button-disabled-bg: var(--color-neutral-300);
+  --button-disabled-color: var(--color-neutral-500);
+  --button-disabled-border: var(--color-neutral-400);
 
   /* Button Focus State */
   --button-focus-ring: var(--focus-ring);
@@ -117,6 +143,10 @@
   --slide-footer-border-width: var(--border-width);
 
   /* Slide Editor */
+  --slide-edit-error-bg: var(--color-danger-100);
+  --slide-edit-error-text: var(--color-danger-800);
+  --slide-edit-loading-bg: var(--color-primary-100);
+  --slide-edit-loading-text: var(--color-primary-800);
   --slide-edit-header-bg: var(--color-neutral-100);
   --slide-edit-textarea-bg: var(--color-neutral-50);
 }
