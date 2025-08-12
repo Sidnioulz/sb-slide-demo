@@ -1,0 +1,79 @@
+.sidebar-item {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar-item-title {
+  flex: 1;
+}
+
+.sidebar-button {
+  font-size: var(--font-size-sm);
+  height: 1.25rem;
+  width: 1.25rem;
+  padding: 4px;
+}
+
+/* Styles for drop zones */
+.sidebar-drop-area {
+  display: block;
+  padding: 6px 8px;
+  margin: 4px 0;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Add a slight hover effect to make drop zones more obvious */
+.sidebar-drop-area:hover {
+  background-color: rgba(66, 153, 225, 0.1);
+  border-color: #4299e1;
+}
+
+/* Add a visual indicator for drop targets */
+.sidebar-drop-area::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  width: 4px;
+  height: 0;
+  background-color: #4299e1;
+  transition: height 0.15s ease;
+}
+
+.sidebar-drop-area:hover::before {
+  height: 80%;
+}
+
+/* Style for the "above" drop zone */
+.side-drop-above {
+  margin-top: 0;
+}
+
+/* Highlight active drop zone */
+.sidebar-drop-area.active-drop-zone {
+  background-color: rgba(66, 153, 225, 0.3);
+  border-color: #4299e1;
+  border-width: 2px;
+  border-style: dashed;
+  color: #2b6cb0;
+  font-weight: bold;
+  transform: scale(1.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+}
+
+/* Visual indicator when dragging */
+.button--draggable {
+  cursor: grab;
+}
+
+.button--draggable:active {
+  cursor: grabbing;
+}

@@ -1,0 +1,72 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { styled } from "storybook/theming";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 011" />
+
+<Slide>
+
+export const Card = styled.div`
+  padding: 1.5rem;
+  border-radius: .75rem;
+  background: var(--color-bg-lighter);
+
+  & pre {
+    margin: 0 !important;
+  }
+`;
+
+## Emitting events with the Channel API
+
+The not-so-secret API [used by addon authors](https://storybook.js.org/docs/addons/configure-addons#channels). Storybook runs a singleton service in both preview and manager contexts, that enables two-way communication between the manager and preview contexts.
+
+{/* TODO: build an accordion within a section here. */}
+
+<div style={{ 
+  display: 'flex', 
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  gap: '2rem', 
+  marginBlock: '2rem', 
+}}>
+
+<Card>
+  <h4><img src="react.svg" alt="" width="30" /> React Hooks</h4>
+
+```jsx
+// In your addon panel
+import { useChannel } from 'storybook/manager-api';
+
+export const Panel = () => {
+  const emit = useChannel();
+ 
+  return (
+    <button onClick={(e) => emit('myAddon/click', e)}>
+      Click me!
+    </button>
+  );
+};
+```
+</Card>
+
+<Card>
+  <h4><img src="js.svg" alt="" width="30" /> Vanilla JS</h4>
+
+```js
+// Can be called anywhere in the manager context
+import { addons } from 'storybook/manager-api';
+
+// This is a singleton, so you can import it anywhere.
+const channel = addons.getChannel()
+
+channel.emit('myAddon/customEvent', ...customData);
+```
+  
+</Card>
+  
+</div>
+
+
+</Slide>

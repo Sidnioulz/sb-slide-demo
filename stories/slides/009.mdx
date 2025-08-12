@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 009" />
+
+<Slide>
+
+## Computing sibling URLs from the index
+
+You can implement your own logic to define what a sibling page is. Here, we assume slides belong to the same deck if they only differ by a slide number.
+
+```jsx
+export function getNextDocsUrl(): string | undefined {
+  const nextEntry = getNextIndexEntry()
+
+  if (nextEntry) {
+    const prefix = currentEntry.data.id.replace(/\d+--docs$/, '')
+    const pageNumRE = /(\d+)--docs$/
+
+    if (nextEntry.id.startsWith(prefix) && pageNumRE.test(nextEntry.id)) {
+      return `?path=/docs/${nextEntry.id}`
+    }
+  }
+
+  return undefined
+}
+
+```
+
+</Slide>

@@ -1,0 +1,91 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { styled } from "storybook/theming";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 012" />
+
+<Slide>
+
+export const Card = styled.div`
+  padding: 1.5rem;
+  border-radius: .75rem;
+  background: var(--color-bg-lighter);
+
+  & pre {
+    margin: 0 !important;
+  }
+`;
+
+## Listening to events 
+
+You can listen back to your own events... but also to Storybook's internal events, like `STORY_CHANGED`!
+
+<div style={{ 
+  display: 'flex', 
+  justifyContent: 'space-between', 
+  gap: '2rem', 
+  marginBlock: '3rem', 
+}}>
+<Card>
+  <h4><img src="react.svg" alt="" width="30" /> React Hooks</h4>
+
+```js
+// In your addon panel
+import { useChannel } from 'storybook/manager-api';
+import { STORY_CHANGED } from 'storybook/internal/core-events';
+
+export const Panel = () => {
+  useChannel({
+    STORY_CHANGED: (...args) => console.log(...args),
+  });
+ 
+  return <AddonPanel key="custom-panel">...</AddonPanel>;
+};
+```
+  
+</Card>
+
+<Card>
+  <h4><img src="js.svg" alt="" width="30" /> Vanilla JS</h4>
+
+```js
+// Can be called anywhere in the manager context
+import { addons } from 'storybook/manager-api';
+import { STORY_CHANGED } from 'storybook/internal/core-events';
+
+const channel = addons.getChannel()
+const listener = (...args) => console.log(...args);
+
+// Register listeners with .on.
+channel.on(STORY_CHANGED, listener);
+
+// Unregister with .off.
+channel.off(STORY_CHANGED, listener);
+```
+  
+</Card>
+  
+  <div style={{ 
+    flex: 1, 
+    padding: '20px', 
+    border: '1px solid #ddd', 
+    borderRadius: '8px', 
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+  }}>
+    <div style={{ fontSize: '24px', marginBottom: '10px' }}>📥</div>
+    <h3>Preview</h3>
+    <pre><code className="language-js">
+    {`
+// In your story or decorator
+addons.getChannel().on('my-event', (data) => {
+  console.log(data);
+});
+    `}
+    </code></pre>
+  </div>
+</div>
+
+
+</Slide>

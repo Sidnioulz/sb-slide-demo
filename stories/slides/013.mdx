@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { styled } from "storybook/theming";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+import { RightSideDecoration } from "../utils/Pane";
+
+<Meta title="Slide 013" />
+
+<Slide>
+
+## Using Channel to keep a fresh copy of the index
+
+
+<dl style={{ marginTop: '6rem', marginBottom: '4rem' }}>
+  <dt>On source file change</dt>
+  <dd>
+    Storybook supports Hot Module Replacement (HMR) and emits a `STORY_INDEX_INVALIDATED` event when story files are modified.
+  </dd>
+  <dt>On navigation</dt>
+  <dd>
+    When user navigates to a new story, Storybook emits `SET_CURRENT_STORY`.
+  </dd>
+</dl>
+
+<p style={{ fontSize: 'var(--font-size-lg)', color: 'var(--color-text-accent)', fontWeight: 500 }}>
+  We can listen to these events in the manager context to refresh our copy of the index. This works even outside of React contexts.
+</p>
+
+<RightSideDecoration visibleWidth="500px" width="1300px">
+```jsx
+// .storybook/manager.ts
+
+import { addons } from 'storybook/manager-api';
+import { SET_CURRENT_STORY, STORY_INDEX_INVALIDATED } from 'storybook/internal/core-events';
+import { refreshCurrentStoryLinks, refreshIndex } from './eventHandlers';
+
+addons.register('myAddon', async (api) => {
+  // Set up handlers for future HMR and navigation events.
+  api.on(STORY_INDEX_INVALIDATED, refreshIndex);
+  api.on(SET_CURRENT_STORY, ({ storyId }) => refreshCurrentStoryLinks(storyId));
+
+  // Initialise the index and current story links.
+  await refreshIndex();
+  const { storyId } = api.getUrlState();
+  await refreshCurrentStoryLinks(storyId);
+});
+```
+</RightSideDecoration>
+
+</Slide>

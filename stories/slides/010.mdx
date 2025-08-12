@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 010" />
+
+<Slide>
+
+## In-app navigation in React/Vue
+
+This anchor component can transparently handle internal links for you:
+
+```jsx
+import { addons } from 'storybook/preview-api'
+
+const channel = addons.getChannel() // more on that later!
+
+const Anchor = ({ href, ...restProps }) => (
+  <a
+    href={href} { /* for visual feedback in the browser */}
+    onClick={(e: React.MouseEvent) => {
+      if (href.startsWith('?')) {
+        e.preventDefault();
+        channel.emit(NAVIGATE_URL, href); // triggers in-app navigation
+      }
+    }}
+    {...restProps}
+  />
+);
+```
+
+</Slide>

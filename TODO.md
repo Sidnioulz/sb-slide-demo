@@ -27,11 +27,32 @@
   * [x] create server action
   * [x] create request
   * [x] create UI
-  * [ ] fix deletion index inconsistencies
-  * [ ] on deletion, navigate to prev if last slide, force-reload index if current?
+  * [x] fix deletion index inconsistencies
+  * [x] on deletion, navigate to prev if last slide
+
+* [ ] Move slides around
+  * [ ] Add D&D logic
+  * [ ] Add server logic
+  * [ ] Tidy up CSS to make it look good
   
 * [ ] Add status management
   * [ ] Add status select in editor
   * [ ] Transform statuses into MDX tags
   * [ ] Add tag-badges addon config to show statuses in sidebar and footer
   * [ ] Add "prod" flag to remove edit/status UI from prod deck
+
+* [ ] On press Esc, nav to /
+
+
+# slides
+
+## Benefits of slides as code?
+* Version-controlled slides
+* Can use UI components, high interactivity
+* Can easily feed design tokens into slides
+
+## Benefits of Storybook?
+
+* Support for React/Vue code in slides
+* Can publish slides easily to Chromatic
+* Can use Chromatic for review and feedback workflows

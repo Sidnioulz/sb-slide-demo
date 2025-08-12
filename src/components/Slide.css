@@ -7,11 +7,13 @@
   overflow: hidden;
 
   --color-bg: #0d1026;
+  --color-bg-lighter: hsl(233, 49%, 15%);
   --color-text-bright: #fff;
   --color-text: #eee;
   --color-text-muted: #d2d4e6;
   --color-link: hsl(54, 100%, 73%);
-  --color-text-accent: #bbeaa6;
+  --color-text-accent: hsl(101, 92%, 78%);
+  --color-text-problem: hsl(18, 92%, 78%);
   --color-text-hl1: #ead3a6;
   --color-text-hl2: #eab0a6;
   --color-text-hl3: #e4a6ea;

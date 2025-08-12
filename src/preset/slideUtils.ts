@@ -128,19 +128,15 @@ export async function swapSlideContents(
   importPath1: string,
   importPath2: string,
 ): Promise<void> {
-  // Read both files
   const content1 = await readSlideFile(importPath1)
   const content2 = await readSlideFile(importPath2)
 
-  // Extract slide content from both files
   const slideContent1 = await extractSlide('', importPath1)
   const slideContent2 = await extractSlide('', importPath2)
 
-  // Replace content in each file with the other's content
   const updatedContent1 = await replaceSlideContent(content1, slideContent2)
   const updatedContent2 = await replaceSlideContent(content2, slideContent1)
 
-  // Write the modified content back to the files
   await writeSlideFile(importPath1, updatedContent1)
   await writeSlideFile(importPath2, updatedContent2)
 }
@@ -156,16 +152,18 @@ export async function createSlideFile(
   const newImportPath = `${slidesDir}/${slideNumber}.mdx`
   const newFilePath = path.join(process.cwd(), newImportPath)
 
+  const paddedSlideNumber = slideNumber.toString().padStart(3, '0')
+
   // Create default template
   const defaultTemplate = `import { Meta } from "@storybook/addon-docs/blocks";
 
 import "../../src/base.css";
 import { Slide } from "../../src/components/Slide";
 
-<Meta title="Slide ${slideNumber}" />
+<Meta title="Slide ${paddedSlideNumber}" />
 
 <Slide>
-${content}
+${content ?? `# Slide ${slideNumber}`}
 </Slide>`
 
   // Ensure directory exists
@@ -253,7 +251,7 @@ export function initialiseSlideFeatures(channel: Channel) {
     },
   )
 
-  // Move slide UP handler
+  // TODO: test this.
   channel.on(
     EVENTS.MOVE_SLIDE_UP_REQUEST,
     async ({ id, payload }: RequestData<MoveSlideUpRequestPayload>) => {
@@ -286,7 +284,7 @@ export function initialiseSlideFeatures(channel: Channel) {
     },
   )
 
-  // Move slide DOWN handler
+  // TODO: test this.
   channel.on(
     EVENTS.MOVE_SLIDE_DOWN_REQUEST,
     async ({ id, payload }: RequestData<MoveSlideDownRequestPayload>) => {
@@ -319,7 +317,6 @@ export function initialiseSlideFeatures(channel: Channel) {
     },
   )
 
-  // Delete slide handler
   channel.on(
     EVENTS.DELETE_SLIDE_REQUEST,
     async ({ id, payload }: RequestData<DeleteSlideRequestPayload>) => {
@@ -379,7 +376,6 @@ export function initialiseSlideFeatures(channel: Channel) {
     },
   )
 
-  // Insert slide handler
   channel.on(
     EVENTS.INSERT_SLIDE_REQUEST,
     async ({ id, payload }: RequestData<InsertSlideRequestPayload>) => {
@@ -426,6 +422,7 @@ export function initialiseSlideFeatures(channel: Channel) {
         }
 
         // If inserting at a position other than the end, update the target position
+        // TODO: test this logic
         if (insertAtIndex < allSlideImportPaths.length) {
           // For insert at beginning or middle, write the new content to the target position
           const targetPath = allSlideImportPaths[insertAtIndex]

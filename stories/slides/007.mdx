@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 007" />
+
+<Slide>
+
+## Making the index available to React code
+
+```jsx
+export async function refreshIndex() {
+  // Fetch and parse index.
+  const response = await fetch('/index.json');
+  assert(response.ok, 'Failed to fetch index.json');
+  const index = await response.json();
+  assert(index.v === 5, 'Unsupported index version: ' + index.v);
+
+  // Convert to linked list for convenience.
+  const linkedList = Object.fromEntries(
+    Object.entries(index.entries).map(([key, value], i, entries) => [
+      key,
+      {
+        data: value,
+        prev: i > 0 ? entries[i - 1][0] : undefined,
+        next: i < entries.length - 1 ? entries[i + 1][0] : undefined,
+      }
+    ]));
+
+  // Store globally for future access.
+  window.__sb_linked.index = linkedList;
+}
+```
+
+
+</Slide>

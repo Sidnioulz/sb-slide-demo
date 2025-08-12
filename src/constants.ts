@@ -1,4 +1,4 @@
-export const ADDON_ID = 'storybook-addon-slideset'
+export const ADDON_ID = 'slideset'
 
 export const EVENTS = {
   GET_SLIDE_SOURCE_REQUEST: `${ADDON_ID}/getSourceRequest`,
@@ -75,4 +75,12 @@ export interface InsertSlideRequestPayload {
 
 export interface InsertSlideResponsePayload {
   newImportPath: string
+}
+
+// Drag and drop state interface
+export interface DragState {
+  isDragging: boolean
+  draggedStoryId: string | null
+  activeDropZoneId: string | null
+  previewElementId?: string | null // ID of the drag preview element for cleanup
 }

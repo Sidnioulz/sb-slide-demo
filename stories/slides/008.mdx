@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { FaceSadIcon, FaceHappyIcon } from '@storybook/icons';
+
+
+import "../../src/base.css";
+import { Slide } from "../../src/components/Slide";
+
+<Meta title="Slide 008" />
+
+<Slide>
+
+## How this helps in-app navigation
+
+<div style={{ marginTop: '3rem' }}>
+The [MDX documentation](https://storybook.js.org/docs/writing-docs/mdx#linking-to-other-stories-and-pages) explains how to link to another story in MDX. Internally, Storybook rewrites links to trigger an in-app navigation. But it can only do so with the Markdown part of MDX, not with the JSX part.
+</div>
+<div style={{ marginBottom: '3rem', width: '60%'}}>
+```mdx
+[Go to specific documentation page](?path=/docs/your-docs-page--id)
+```
+</div>
+
+
+<p style={{fontSize: 'var(--font-size-lg)', fontWeight: 500, marginBottom: "-.5rem" }}>Computing sibling URLs from the index</p>
+<ul style={{ listStyle: 'none', }}>
+<li style={{color:'var(--color-text-problem)'}}><FaceSadIcon size="22" style={{ marginInlineStart: '-2rem', paddingInlineEnd: '1rem'}} /> Developers have to handcraft URLs from their documentation titles</li>
+<li style={{color:'var(--color-text-accent)'}}><FaceHappyIcon size="22" style={{ marginInlineStart: '-2rem', paddingInlineEnd: '1rem'}} /> We can identify sibling pages' IDs from the index without handcrafting</li>
+</ul>
+
+
+<p style={{fontSize: 'var(--font-size-lg)', fontWeight: 500, marginBottom: "-.5rem" }}>In-app navigation in React/Vue</p>
+<ul style={{ listStyle: 'none', }}>
+<li style={{color:'var(--color-text-problem)'}}><FaceSadIcon size="22" style={{ marginInlineStart: '-2rem', paddingInlineEnd: '1rem'}} /> Links written in React or Vue trigger a full page reload instead of in-app navigations</li>
+<li style={{color:'var(--color-text-accent)'}}><FaceHappyIcon size="22" style={{ marginInlineStart: '-2rem', paddingInlineEnd: '1rem'}} /> We can use the Channel API to emit a `NAVIGATE_URL` event, triggering in-app navigation by the Storybook Manager</li>
+</ul>
+
+
+
+</Slide>

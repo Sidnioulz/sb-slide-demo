@@ -56,7 +56,8 @@ export function getCurrentIndexEntry(): StoryContext {
   return getIndexEntry(getCurrentStoryId())
 }
 
-// TODO: move adjacent computation to manager.tsx for better caching.
+// TODO: move adjacent computation to manager.tsx for better caching
+// or set up local caching mechanism that uses a manager-managed invalidation key.
 function getAdjacentDocs(): StoryContext[] {
   const parentWindow = window.parent as Window & {
     __sb_linked: WindowWithIndex
