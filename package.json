@@ -47,7 +47,7 @@
     "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-react": "^7.37.5",
     "mdast-util-mdx-jsx": "^3.2.0",
-    "playwright": "^1.54.2",
+    "playwright": "^1.55.1",
     "prettier": "^3.6.2",
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
